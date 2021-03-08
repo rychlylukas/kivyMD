@@ -1,0 +1,29 @@
+
+{
+  "people": [
+    {
+      "jmeno": "Jakub Kuttich",
+      "pohlavi": "muž",
+      "obrazek": "modules/media/muz.png",
+      "povolani": "učitel",
+      "vek": "40",
+      "ockovani": "očkován - Pfizer"
+    },
+    {
+      "jmeno": "Andrea Turková",
+      "pohlavi": "žena",
+      "obrazek": "modules/media/zena.png",
+      "povolani": "prodavačka",
+      "vek": "55",
+      "ockovani": "nenaočkován"
+    },
+    {
+      "jmeno": "Jan Pospíšil",
+      "pohlavi": "muž",
+      "obrazek": "modules/media/muz.png",
+      "povolani": "doktor",
+      "vek": "23",
+      "ockovani": "očkován - AstraZeneca"
+    }
+  ]
+}

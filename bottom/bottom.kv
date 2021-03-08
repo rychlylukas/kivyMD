@@ -1,0 +1,157 @@
+#:import utils kivy.utils
+BoxLayout:
+    orientation:'vertical'
+
+    MDToolbar:
+        title: 'Bottom navigation'
+        md_bg_color: utils.get_color_from_hex('#28df99')
+        specific_text_color: 1, 1, 1, 1
+
+    MDBottomNavigation:
+        id: navigation
+        panel_color: utils.get_color_from_hex('#e4fbff')
+
+        MDBottomNavigationItem:
+            name: 'screen 0'
+            text: 'Hlavní'
+            icon: 'home'
+
+            MainScreen:
+
+        MDBottomNavigationItem:
+            name: 'screen 1'
+            text: 'Text'
+            icon: 'text'
+
+            TextScreen:
+
+        MDBottomNavigationItem:
+            name: 'screen 2'
+            text: 'Formulář'
+            icon: 'card-bulleted'
+
+            FormScreen:
+
+        MDBottomNavigationItem:
+            name: 'screen 3'
+            text: 'Tabulka'
+            icon: 'grid'
+
+            TableScreen:
+
+
+<TextScreen>:
+    name: 'textscreen'
+
+    FloatLayout:
+        canvas:
+            Color:
+                rgb: utils.get_color_from_hex('#FFFFFF')
+            RoundedRectangle:
+                pos: self.pos
+                size: self.size
+                radius: [10, 10, 10, 10]
+
+        MDLabel:
+            id: result
+            text: 'Výsledek'
+            size_hint: (.5 , .1)
+            pos_hint: {'center_x': 0.5, 'center_y': 0.9}
+            halign: 'center'
+            font_style: 'H5'
+            canvas.before:
+                Color:
+                    rgb: utils.get_color_from_hex('#e4fbff')
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_x: 0.8
+            size_hint_y: 0.1
+            pos_hint: {'center_x': 0.5, 'center_y': 0.7}
+            height: self.minimum_height
+            spacing: 10
+            canvas.before:
+                Color:
+                    rgb: utils.get_color_from_hex('#e4fbff')
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            MDLabel:
+                text: 'Váha'
+                halign: 'center'
+                canvas.before:
+                    Color:
+                        rgb: utils.get_color_from_hex('#28df99')
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+
+            MDTextField:
+                id: vaha
+                mode: 'fill'
+                color: 1,0,1,1
+
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_x: 0.8
+            size_hint_y: 0.1
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            height: self.minimum_height
+            spacing: 10
+            canvas.before:
+                Color:
+                    rgb: utils.get_color_from_hex('#e4fbff')
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            MDLabel:
+                text: 'Výška'
+                halign: 'center'
+                canvas.before:
+                    Color:
+                        rgb: utils.get_color_from_hex('#28df99')
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+
+            MDTextField:
+                id: vyska
+                mode: 'fill'
+
+        MDRaisedButton:
+            text: "Vypočítej"
+            md_bg_color: utils.get_color_from_hex('#e4fbff')
+            pos_hint: {'center_x': 0.5, 'center_y': 0.1}
+            halign: 'center'
+            on_press:
+                print("Stisknuto")
+                root.ids.result.text = str(round(float(root.ids.vaha.text) / ((float(root.ids.vyska.text)/100) ** 2), 2))
+
+
+
+<FormScreen>
+    name:'formscreen'
+    PageLayout:
+
+
+<TableScreen>:
+    name:'tablescreen'
+    PageLayout:
+        MDLabel:
+            text:'Table Screen'
+            font_style: 'H2'
+            halign: 'center'
+            pos_hint: {'center_y':0.75}
+
+<MainScreen>:
+    name : 'mainscreen'
+    PageLayout:
+        MDLabel:
+            text:'Main Screen'
+            font_style : 'H2'
+            halign : 'center'
+            pos_hint : {'center_y':0.7}
